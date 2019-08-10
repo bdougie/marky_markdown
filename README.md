@@ -1,8 +1,5 @@
 # MarkyMarkdown
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/marky_markdown`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+MarkyMarkdown's purpose is to read markdown from escaped GitHub Issues bodies and identify vairables. This is intended to be used with GitHub Actions. The plan is to make this a little versatile, but for now leverage it from this repo.
 
 ## Installation
 
@@ -22,7 +19,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+test_phrase = "<!--#\r\nEXAMPLE=mother\r\n$-->\r\nSay hi to your {{ EXAMPLE }} for me"
+transformation = MarkyMarkdown::Transformer.transform(test_phrase)
+
+p transformation
+
+"<!--#\r\nEXAMPLE=mother\r\n$-->\r\nSay hi to your mother for me"
+```
 
 ## Development
 
