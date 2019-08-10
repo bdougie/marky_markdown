@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Brian 'bdougie' Douglas"]
   spec.email         = ["ilikerobot@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Tranform your markdown with variable interpolation}
+  spec.description   = %q{MarkyMarkdown add the ability to set variables in Markdown for interpolation}
+  spec.homepage      = "https://github.com/bdougie/marky_markdown"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
