@@ -4,7 +4,7 @@ MarkyMarkdown's purpose is to read markdown from escaped GitHub Issues bodies an
 ## Installation
 
 Add this line to your application's Gemfile:
-
+testing
 ```ruby
 gem 'marky_markdown'
 ```
