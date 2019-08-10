@@ -15,15 +15,14 @@ class MarkyMarkdownTest < Minitest::Test
     assert_equal @successful_transform, transformation, "Transformation for the test case was unsuccessful"
   end
 
-  def shorten_str_test
+  def test_shorten_str
     str = MarkyMarkdown::Helpers.shorten_str(@test_case)
     assert str < @test_case, "the shorten_str method failed to shortened the string"
-    assert_not_equal str < @test_case, "the string is not less than the original"
   end
 
-  def split_str_by_returns_test
+  def test_split_str_by_returns
     str = MarkyMarkdown::Helpers.shorten_str(@test_case)
-    variable_hash = MarkyMarkdown::Helpers.split_str_by_returns_test(str)
-    assert_equal variable_hash, {EXAMPLE: "mother"}, "Variable hash was unable to be created"
+    variable_array = MarkyMarkdown::Helpers.split_str_by_returns(str)
+    assert_instance_of Array, variable_array, "Array without returns was not created"
   end
 end
