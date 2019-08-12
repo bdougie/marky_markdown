@@ -15,6 +15,20 @@ class MarkyMarkdownTest < Minitest::Test
     assert_equal @successful_transform, transformation, "Transformation for the test case was unsuccessful"
   end
 
+  def test_identify_variables
+    str = "<!--#\r\nEXAMPLE=mother\r\n$-->"
+    variables = MarkyMarkdown::Transformer.identify_variables(str)
+    assert variables.key?("EXAMPLE")
+    assert_instance_of Hash, variables, "Variable hash was not created"
+  end
+
+  def test_find_and_replace
+    variables = MarkyMarkdown::Transformer.identify_variables(@test_case)
+    transformation = MarkyMarkdown::Transformer.find_and_replace(variables, @test_case)
+    assert transformation.include?("Say hi to your mother")
+    assert_instance_of String, transformation, "Transformed string was not created"
+  end
+
   def test_shorten_str
     str = MarkyMarkdown::Helpers.shorten_str(@test_case)
     assert str < @test_case, "the shorten_str method failed to shortened the string"
