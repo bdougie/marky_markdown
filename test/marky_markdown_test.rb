@@ -24,7 +24,7 @@ class MarkyMarkdownTest < Minitest::Test
 
   def test_find_and_replace
     variables = MarkyMarkdown::Transformer.identify_variables(@test_case)
-    transformation = MarkyMarkdown::Transformer.find_and_replace(variables, @test_case)
+    transformation = MarkyMarkdown::Transformer.find_and_replace({variables: variables, body: @test_case})
     assert transformation.include?("Say hi to your mother")
     assert_instance_of String, transformation, "Transformed string was not created"
   end
