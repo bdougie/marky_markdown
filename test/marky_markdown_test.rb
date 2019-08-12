@@ -19,6 +19,7 @@ class MarkyMarkdownTest < Minitest::Test
     str = "<!--#\r\nEXAMPLE=mother\r\n$-->"
     variables = MarkyMarkdown::Transformer.identify_variables(str)
     assert variables.key?("EXAMPLE")
+    refute variables.key?(nil)
     assert_instance_of Hash, variables, "Variable hash was not created"
   end
 
