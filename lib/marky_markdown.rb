@@ -12,9 +12,9 @@ module MarkyMarkdown
 
       key_value_array = Helpers.split_str_by_returns(shortened).map do |v|
         v.split("=") unless v.strip.empty?
-      end
+      end.compact
 
-      Hash[key_value_array.map { |key, value| [key, value] }]
+      Hash[key_value_array.map { |key, value| [key, value]  }]
     end
 
     def self.find_and_replace(input)
