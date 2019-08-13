@@ -23,9 +23,9 @@ class MarkyMarkdownTest < Minitest::Test
     assert_instance_of Hash, variables, "Variable hash was not created"
   end
 
-  def test_find_and_replace
+  def test_compile
     variables = MarkyMarkdown::Transformer.identify_variables(@test_case)
-    transformation = MarkyMarkdown::Transformer.find_and_replace({variables: variables, body: @test_case})
+    transformation = MarkyMarkdown::Transformer.compile({variables: variables, body: @test_case})
     assert transformation.include?("Say hi to your mother")
     assert_instance_of String, transformation, "Transformed string was not created"
   end
