@@ -45,3 +45,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the MarkyMarkdown project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/marky_markdown/blob/master/CODE_OF_CONDUCT.md).
+
+_This project is unrelated to the npm [marky-markdown](https://www.npmjs.com/package/marky-markdown) package_
