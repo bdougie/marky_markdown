@@ -4,6 +4,8 @@ class MarkyMarkdownTest < Minitest::Test
   def setup
     @test_case = "<!--#\r\nEXAMPLE=mother\r\n$-->\r\nSay hi to your {{ EXAMPLE }} for me"
     @successful_transform = "<!--#\r\nEXAMPLE=mother\r\n$-->\r\nSay hi to your mother for me"
+    @double_test_case = "<!--#\r\nEXAMPLE=mother\r\n$-->\r\nSay hi to your {{ EXAMPLE }} for me, your {{ EXAMPLE }}"
+    @double_successful_transform = "<!--#\r\nEXAMPLE=mother\r\n$-->\r\nSay hi to your mother for me, your mother"
   end
 
   def test_that_it_has_a_version_number
@@ -13,6 +15,11 @@ class MarkyMarkdownTest < Minitest::Test
   def test_that_the_test_case_works
     transformation = MarkyMarkdown::Transformer.transform(@test_case)
     assert_equal @successful_transform, transformation, "Transformation for the test case was unsuccessful"
+  end
+
+  def test_that_the_test_case_works_for_multiple_vars_use_case
+    transformation = MarkyMarkdown::Transformer.transform(@double_test_case)
+    assert_equal @double_successful_transform, transformation, "Transformation for the double test case was unsuccessful"
   end
 
   def test_identify_variables
@@ -39,5 +46,12 @@ class MarkyMarkdownTest < Minitest::Test
     str = MarkyMarkdown::Helpers.shorten_str(@test_case)
     variable_array = MarkyMarkdown::Helpers.split_str_by_returns(str)
     assert_instance_of Array, variable_array, "Array without returns was not created"
+  end
+
+  def test_count_occurences_returns
+    key = "{{ EXAMPLE }}"
+    body = "Say hi to your {{ EXAMPLE }} for me, {{ EXAMPLE }}"
+    occurences = MarkyMarkdown::Helpers.count_occurences_for(key, body)
+    assert_equal 2, occurences, "Occurence of key is not correct"
   end
 end

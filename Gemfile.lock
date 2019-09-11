@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    marky_markdown (0.2.0)
+    marky_markdown (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -19,4 +19,4 @@ DEPENDENCIES
   rake (~> 10.0)
 
 BUNDLED WITH
-   1.16.2
+   1.16.6

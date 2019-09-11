@@ -22,7 +22,11 @@ module MarkyMarkdown
         next if v.nil?
 
         key = "{{ #{k} }}"
-        input[:body] [key] = v if input[:body].include? key
+        occurences = Helpers.count_occurences_for(key, input[:body])
+
+        occurences.times do
+          input[:body] [key] = v if input[:body].include? key
+        end
       end
 
       input[:body]
@@ -42,6 +46,11 @@ module MarkyMarkdown
     rescue StandardError => e
       puts e.message
       puts e.backtrace.inspect
+    end
+
+    def self.count_occurences_for(key, body)
+      length = key.length
+      body.count(key) / length
     end
   end
 end
