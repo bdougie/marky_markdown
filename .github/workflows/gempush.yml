@@ -1,10 +1,9 @@
 name: Ruby Gem
 
 on:
-  push:
-    branches:
-      - master
-
+  release:
+    types: [published]
+    
 jobs:
   build:
     name: Build + Publish
